@@ -190,10 +190,7 @@ func ContainsPrefix(prefixSet []string, item corev1.ResourceName) bool {
 func Intersection(a []corev1.ResourceName, b []corev1.ResourceName) []corev1.ResourceName {
 	result := make([]corev1.ResourceName, 0, len(a))
 	for _, item := range a {
-		if Contains(result, item) {
-			continue
-		}
-		if !Contains(b, item) {
+		if Contains(result, item) || !Contains(b, item) {
 			continue
 		}
 		result = append(result, item)
